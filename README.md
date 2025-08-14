@@ -84,7 +84,7 @@ portfolio-repo/
 1. **Clone or Download**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/GALIB-Dev/portfolio-repo.git
    cd portfolio-repo
    ```
 
