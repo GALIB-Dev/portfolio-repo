@@ -2,16 +2,16 @@
 
 A stunning, responsive portfolio website built with modern frontend technologies showcasing creative development, design skills, and professional experience.
 
-## ✨ Features
+##  Features
 
-### 🎨 **Modern Design**
+###  **Modern Design**
 
 - Clean, minimalist aesthetic with gradient accents
 - Responsive design that works on all devices
 - Smooth animations and transitions
 - Professional color scheme and typography
 
-### 🚀 **Advanced Functionality**
+###  **Advanced Functionality**
 
 - **Interactive Navigation**: Smooth scrolling with active state management
 - **Hero Section**: GSAP animations with typing effect and floating elements
@@ -21,14 +21,14 @@ A stunning, responsive portfolio website built with modern frontend technologies
 - **Thoughts Section**: Blog-style content presentation
 - **Contact Form**: Form validation and notification system
 
-### 📱 **Responsive & Mobile-First**
+###  **Responsive & Mobile-First**
 
 - Mobile-optimized navigation with hamburger menu
 - Responsive grid layouts for all screen sizes
 - Touch-friendly interactions
 - Optimized performance on mobile devices
 
-### 🎭 **Animations & Effects**
+###  **Animations & Effects**
 
 - GSAP animations for complex sequences
 - Framer Motion for scroll-triggered animations
@@ -36,7 +36,7 @@ A stunning, responsive portfolio website built with modern frontend technologies
 - Hover effects and micro-interactions
 - Loading animations and transitions
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **Next.js 14**: App Router, Server Components, and modern React framework
 - **React 18**: Latest React features and hooks
@@ -48,7 +48,7 @@ A stunning, responsive portfolio website built with modern frontend technologies
 - **Sass**: CSS preprocessing
 - **Bootstrap**: Component library integration
 
-## 📁 File Structure
+## File Structure
 
 ```
 portfolio-repo/
@@ -72,7 +72,7 @@ portfolio-repo/
 └── README.md                 # Project documentation
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -103,7 +103,7 @@ portfolio-repo/
 4. **Open in Browser**
    - Navigate to `http://localhost:3000`
 
-## 🎯 Sections Overview
+## Sections Overview
 
 ### 1. **Hero Section**
 
@@ -148,7 +148,7 @@ portfolio-repo/
 - Social media links
 - Functional contact form with validation
 
-## 🎨 Customization
+## Customization
 
 ### Content
 
@@ -169,20 +169,20 @@ portfolio-repo/
 - Framer Motion animations throughout components
 - Custom CSS animations in `globals.css`
 
-## 📱 Browser Support
+## Browser Support
 
 - **Modern Browsers**: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 - **Mobile**: iOS Safari 14+, Chrome Mobile 90+
 - **Fallbacks**: Graceful degradation for older browsers
 
-## 🚀 Performance Features
+## Performance Features
 
 - **Next.js Optimization**: Automatic code splitting and optimization
 - **Image Optimization**: Next.js Image component
 - **Lazy Loading**: Component-level code splitting
 - **Animation Performance**: Hardware-accelerated transforms
 
-## 🔧 Advanced Features
+##  Advanced Features
 
 ### GSAP Integration
 
@@ -202,14 +202,14 @@ portfolio-repo/
 - Better developer experience
 - Reduced runtime errors
 
-## 📈 SEO & Accessibility
+## SEO & Accessibility
 
 - **Next.js SEO**: Built-in optimization
 - **Semantic HTML**: Proper structure
 - **Accessibility**: ARIA labels and keyboard navigation
 - **Performance**: Core Web Vitals optimization
 
-## 🚀 Deployment
+##  Deployment
 
 ### Vercel (Recommended)
 
@@ -231,7 +231,7 @@ npm run build
 - **Render**: Simple deployment
 - **DigitalOcean App Platform**: Scalable hosting
 
-## 🔍 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -247,7 +247,7 @@ npm run build
 - Verify all dependencies are installed
 - Clear browser cache if needed
 
-## 📚 Learning Resources
+##  Learning Resources
 
 - **Next.js**: [Official Documentation](https://nextjs.org/docs)
 - **React**: [React Documentation](https://react.dev)
@@ -256,7 +256,7 @@ npm run build
 - **Framer Motion**: [Framer Motion Docs](https://www.framer.com/motion/)
 - **GSAP**: [GSAP Documentation](https://greensock.com/docs)
 
-## 🤝 Contributing
+## 🤝 Contributing *****
 
 1. Fork the repository
 2. Create a feature branch
