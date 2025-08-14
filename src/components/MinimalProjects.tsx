@@ -6,6 +6,8 @@ import Image, { StaticImageData } from "next/image";
 // Local images from src/Image (user-provided)
 import firefoxImg from "@/Image/Firefox_Screenshot_2025-08-14T07-43-34.609Z.png";
 import truenasImg from "@/Image/truenas.png";
+import vjusImg from "@/Image/vjus.png";
+import twelveBasesImg from "@/Image/12bases.png";
 
 type Project = {
   id: number;
@@ -57,8 +59,8 @@ const projects: Project[] = [
 ];
 
 const localImageMap: Record<string, StaticImageData> = {
-  vjus: firefoxImg,
-  "12bases": firefoxImg,
+  vjus: vjusImg,
+  "12bases": twelveBasesImg,
   "home-server": truenasImg,
   "oracle-cloud": firefoxImg,
 };
