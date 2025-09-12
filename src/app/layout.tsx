@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "MOHAMMAD AL GALIB",
-  description: "STUDENT | TECH ENTHUSIAST | EXPLORER",
+  description: "STUDENT | TECH ENTHUSIAST | BANGLADESH",
 };
-
+  
 export default function RootLayout({
   children,
 }: Readonly<{
