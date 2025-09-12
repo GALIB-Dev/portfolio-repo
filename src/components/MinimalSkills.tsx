@@ -58,7 +58,7 @@ export default function MinimalSkills() {
                 alt={s.name}
                 loading="lazy"
                 referrerPolicy="no-referrer"
-                className="max-w-full max-h-full object-contain filter grayscale saturate-0 group-hover:grayscale-0 group-hover:saturate-150 group-hover:brightness-110 transition"
+                className="max-w-full max-h-full object-contain transition"
                 onError={(e) => {
                   const t = e.currentTarget as HTMLImageElement;
                   if (!t.dataset.fallback) {

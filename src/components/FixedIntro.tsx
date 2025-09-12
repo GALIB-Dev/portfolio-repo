@@ -38,7 +38,7 @@ export default function FixedIntro() {
           <img
             src="/me.jpg"
             alt="Mohammad Al Galib"
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border border-zinc-200 dark:border-zinc-800 filter grayscale hover:grayscale-0 transition"
+            className="w-15 h-15 md:w-18 md:h-18 rounded-full object-cover border border-zinc-200 dark:border-zinc-800 filter "
             onError={(e) => {
               const t = e.currentTarget as HTMLImageElement;
               if (t.src !== "https://picsum.photos/200") t.src = "https://picsum.photos/200";

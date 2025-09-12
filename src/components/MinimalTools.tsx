@@ -34,12 +34,15 @@ const tools: Tool[] = [
 ];
 
 const primarySpecs: DeviceSpec[] = [
-  { label: "Device", value: "HP ProBook 450 G4" },
-  { label: "OS", value: "Arch Linux x86_64" },
-  { label: "CPU", value: "Intel i5‑7200U (4)" },
-  { label: "GPU", value: "Intel HD 620" },
-  { label: "RAM", value: "8 GB" },
-  { label: "Storage", value: "~456 GB ext4" },
+  { label: "Device", value: "ThinkPad X1 Yoga Gen 13" },
+  { label: "Processor", value: "13th Gen Intel Core i7-1355U (1.70 GHz)" },
+  { label: "RAM", value: "16 GB (15.7 GB usable)" },
+  { label: "System type", value: "64-bit OS, x64-based processor" },
+  { label: "Pen & Touch", value: "Pen and touch support with 10 touch points" },
+  { label: "Display", value: "14\" WUXGA Touch (1920x1200)" },
+  { label: "Storage", value: "512 GB NVMe SSD" },
+  { label: "OS", value: "Dual boot: Arch Linux & Windows 11 Pro" },
+  { label: "Weight", value: "1.4 kg" },
 ];
 
 const labSpecs: DeviceSpec[] = [
@@ -67,7 +70,7 @@ function Badge({ tool }: { tool: Tool }) {
             alt={tool.name}
             loading="lazy"
             referrerPolicy="no-referrer"
-            className="w-6 h-6 object-contain filter grayscale group-hover:grayscale-0 transition"
+            className="w-6 h-6 object-contain transition"
             onError={(e) => {
               const t = e.currentTarget as HTMLImageElement;
               if (!t.dataset.fallback) {

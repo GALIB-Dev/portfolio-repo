@@ -15,7 +15,8 @@ export default function MinimalAbout() {
         About
       </motion.h2>
 
-      <div className="grid gap-8 md:gap-10 md:grid-cols-2">
+      <div className="bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8">
+        <div className="grid gap-8 md:gap-10 md:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,6 +32,20 @@ export default function MinimalAbout() {
             My focus is on clarity, performance, and a clean aesthetic—black & white, subtle motion,
             and purposeful interactions.
           </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.08 }}
+          className="flex flex-col items-center"
+        >
+          <img
+            src="/me2.jpg"
+            alt="Portrait of Mohammad Al Galib"
+            className="w-full max-w-sm aspect-square object-cover rounded-xl border border-zinc-200 dark:border-zinc-800"
+          />
         </motion.div>
 
         <motion.ul
@@ -50,6 +65,7 @@ export default function MinimalAbout() {
             Exploring motion with Framer Motion and GSAP
           </li>
         </motion.ul>
+        </div>
       </div>
     </section>
   );

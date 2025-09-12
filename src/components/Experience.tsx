@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants, easeOut } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { MY_EXPERIENCE } from './experience.data';
@@ -9,14 +9,14 @@ const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: easeOut } },
   };
 
   return (
@@ -24,7 +24,7 @@ const Experience = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 md:mb-14">
           <h2 className="text-xl md:text-2xl font-medium text-black dark:text-white">Experience</h2>
-          <p className="mt-2 text-sm md:text-base text-zinc-600 dark:text-zinc-400">Roles and projects I've been working on</p>
+          <p className="mt-2 text-sm md:text-base text-zinc-600 dark:text-zinc-400">Roles and projects I&apos;ve been working on</p>
         </div>
 
         <motion.div

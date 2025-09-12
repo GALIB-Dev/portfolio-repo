@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants, easeOut } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -31,7 +31,7 @@ const Skills = () => {
     }
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -41,14 +41,14 @@ const Skills = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
+        ease: easeOut,
       },
     },
   };
@@ -116,7 +116,7 @@ const Skills = () => {
                         transition={{ 
                           delay: categoryIndex * 0.2 + skillIndex * 0.1 + 0.3, 
                           duration: 1,
-                          ease: "easeOut"
+                          ease: easeOut
                         }}
                         className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative overflow-hidden`}
                       >
@@ -126,7 +126,7 @@ const Skills = () => {
                           transition={{ 
                             duration: 2, 
                             repeat: Infinity, 
-                            ease: "linear" 
+                            ease: (t) => t 
                           }}
                           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                         />

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 
 // Local images from src/Image (user-provided)
-import firefoxImg from "@/Image/Firefox_Screenshot_2025-08-14T07-43-34.609Z.png";
+import firefoxImg from "@/Image/pi-hole.png";
 import truenasImg from "@/Image/truenas.png";
 import vjusImg from "@/Image/vjus.png";
 import twelveBasesImg from "@/Image/12bases.png";
@@ -73,7 +73,7 @@ function ProjectImage({ title, slug }: { title: string; slug: string }) {
       alt={title}
       width={1200}
       height={800}
-      className="w-full h-56 object-cover filter grayscale group-hover:grayscale-0 transition duration-300 ease-out"
+      className="w-full h-56 object-cover transition duration-300 ease-out"
       priority={false}
     />
   );
