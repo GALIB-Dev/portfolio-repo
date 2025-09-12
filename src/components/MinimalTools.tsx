@@ -34,7 +34,7 @@ const tools: Tool[] = [
 ];
 
 const primarySpecs: DeviceSpec[] = [
-  { label: "Device", value: "ThinkPad X1 Yoga Gen 13" },
+  { label: "Device", value: "ThinkPad X1 Yoga Gen 8 " },
   { label: "Processor", value: "13th Gen Intel Core i7-1355U (1.70 GHz)" },
   { label: "RAM", value: "16 GB (15.7 GB usable)" },
   { label: "System type", value: "64-bit OS, x64-based processor" },
