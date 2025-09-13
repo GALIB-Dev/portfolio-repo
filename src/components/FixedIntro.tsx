@@ -46,7 +46,7 @@ export default function FixedIntro() {
           />
           <div>
             <h1 className="font-semibold text-black dark:text-white text-2xl md:text-3xl leading-tight">Mohammad Al Galib</h1>
-            <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-300 mt-1">Student | Tech Enthusiast | Explorer</p>
+            <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-300 mt-1">Student | Tech Enthusiast | Bangladesh</p>
           </div>
         </div>
       </div>
