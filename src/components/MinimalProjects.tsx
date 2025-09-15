@@ -8,6 +8,7 @@ import firefoxImg from "@/Image/pi-hole.png";
 import truenasImg from "@/Image/truenas.png";
 import vjusImg from "@/Image/vjus.png";
 import twelveBasesImg from "@/Image/12bases.png";
+import selfHostedImg from "@/Image/self-hosted.png";
 
 type Project = {
   id: number;
@@ -20,6 +21,16 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    id: 0,
+    title: "Self Hosted Home Server",
+    slug: "self-hosted-home-server",
+    description:
+      "A fully self-hosted home server solution for backups, media streaming, and private cloud services, running on repurposed hardware.",
+    tags: ["Self-Hosted", "Server", "Docker", "Home Lab"],
+    live: undefined,
+    code: undefined,
+  },
   {
     id: 1,
     title: "VJUS — Land Survey Development",
@@ -42,7 +53,7 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Home Server (Old Laptop)",
+    title: "Network Attached Storage (Old Laptop)",
     slug: "home-server",
     description:
       "Repurposed an old laptop into a reliable home server for backups, media, and self‑hosted services (storage, shares, and containers).",
@@ -50,11 +61,11 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Oracle Cloud VM",
-    slug: "oracle-cloud",
+    title: "Home Pi-hole DNS Server",
+    slug: "home-pi-hole",
     description:
-      "Always‑Free cloud machine configured for hosting lightweight services and experiments, hardened and monitored.",
-    tags: ["Oracle Cloud", "Ubuntu", "Nginx", "Docker"],
+      "Home network-wide ad blocker , hardened and monitored.",
+    tags: ["Self-Hosted", "Ubuntu", "Nginx", "Docker"],
   },
 ];
 
@@ -62,18 +73,26 @@ const localImageMap: Record<string, StaticImageData> = {
   vjus: vjusImg,
   "12bases": twelveBasesImg,
   "home-server": truenasImg,
-  "oracle-cloud": firefoxImg,
+  "home-pi-hole": firefoxImg,
+  "self-hosted-home-server": selfHostedImg,
 };
 
 function ProjectImage({ title, slug }: { title: string; slug: string }) {
   const src = localImageMap[slug];
+  // Make self-hosted-home-server image smaller
+  const isSelfHosted = slug === "self-hosted-home-server";
+  if (!src) return null;
   return (
     <Image
       src={src}
       alt={title}
-      width={1200}
-      height={800}
-      className="w-full h-56 object-cover transition duration-300 ease-out"
+      width={isSelfHosted ? 200 : 1200}
+      height={isSelfHosted ? 120 : 800}
+      className={
+        isSelfHosted
+          ? "w-64 h-40 object-contain mx-auto my-4 transition duration-300 ease-out"
+          : "w-full h-56 object-cover transition duration-300 ease-out"
+      }
       priority={false}
     />
   );
