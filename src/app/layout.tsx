@@ -27,7 +27,23 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <Script id="theme-script" strategy="beforeInteractive">
-          {`(function(){try{var ls=localStorage.getItem('theme');var mql=window.matchMedia('(prefers-color-scheme: dark)');var theme=ls?ls:(mql.matches?'dark':'light');var root=document.documentElement;if(theme==='dark')root.classList.add('dark');else root.classList.remove('dark');}catch(e){}})();`}
+          {`
+            (function() {
+              try {
+                // Force dark mode always
+                document.documentElement.style.colorScheme = 'dark';
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                
+                // Set in localStorage
+                localStorage.setItem('theme', 'dark');
+                
+                console.log('Forced dark mode on page load');
+              } catch (e) {
+                console.error('Dark mode initialization error:', e);
+              }
+            })();
+          `}
         </Script>
       </head>
       <body

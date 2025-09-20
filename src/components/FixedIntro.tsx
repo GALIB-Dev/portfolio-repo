@@ -3,9 +3,31 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./minimal.module.scss";
 
+// Force dark mode on component mount
+function useForceDarkMode() {
+  useEffect(() => {
+    const root = document.documentElement;
+    const body = document.body;
+    
+    // Force dark mode
+    root.classList.remove("light");
+    root.classList.add("dark");
+    body.classList.remove("light"); 
+    body.classList.add("dark");
+    
+    // Set in localStorage
+    localStorage.setItem("theme", "dark");
+    
+    console.log("Forced dark mode applied");
+  }, []);
+}
+
 export default function FixedIntro() {
   const [opacity, setOpacity] = useState(1);
   const raf = useRef<number | null>(null);
+
+  // Force dark mode when component mounts
+  useForceDarkMode();
 
   useEffect(() => {
     const fadeStart = 0; // px

@@ -54,7 +54,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-white">
+    <section id="skills" className="py-20 bg-white dark:bg-zinc-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -65,13 +65,13 @@ const Skills = () => {
         >
           <motion.h2 
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-zinc-100 mb-6"
           >
             Skills & Expertise
           </motion.h2>
           <motion.p 
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-600 dark:text-zinc-400 max-w-3xl mx-auto"
           >
             Technical skills and creative abilities in modern frontend development
           </motion.p>
@@ -82,9 +82,9 @@ const Skills = () => {
             <motion.div
               key={category.title}
               variants={itemVariants}
-              className="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-gray-50 dark:bg-zinc-900 rounded-2xl p-8 shadow-lg hover:shadow-xl dark:shadow-zinc-800/50 transition-shadow duration-300"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-zinc-100 mb-8 text-center">
                 {category.title}
               </h3>
               
@@ -101,15 +101,15 @@ const Skills = () => {
                     className="group"
                   >
                     <div className="flex justify-between items-center mb-3">
-                      <span className="font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors duration-200">
+                      <span className="font-semibold text-gray-800 dark:text-zinc-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
                         {skill.name}
                       </span>
-                      <span className="text-sm font-bold text-indigo-600">
+                      <span className="text-sm font-bold text-indigo-600 dark:text-indigo-400">
                         {skill.level}%
                       </span>
                     </div>
                     
-                    <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                    <div className="w-full bg-gray-200 dark:bg-zinc-700 rounded-full h-3 overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
@@ -146,7 +146,7 @@ const Skills = () => {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="mt-16"
         >
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-zinc-100 mb-8 text-center">
             Additional Technologies
           </h3>
           
@@ -160,11 +160,11 @@ const Skills = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ delay: 1 + index * 0.05, duration: 0.3 }}
-                className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 border border-gray-100"
+                className="bg-white dark:bg-zinc-800 p-4 rounded-xl shadow-md hover:shadow-lg dark:shadow-zinc-900/50 transition-all duration-200 hover:scale-105 border border-gray-100 dark:border-zinc-700"
               >
                 <div className="text-center">
                   <div className="text-2xl mb-2">💻</div>
-                  <div className="text-sm font-medium text-gray-700">{tech}</div>
+                  <div className="text-sm font-medium text-gray-700 dark:text-zinc-300">{tech}</div>
                 </div>
               </motion.div>
             ))}
