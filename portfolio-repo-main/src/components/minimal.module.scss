@@ -1,0 +1,8 @@
+$padding: 1rem;
+
+.fixedIntro {
+  position: fixed;
+  top: $padding;
+  left: $padding;
+  z-index: 40;
+}

@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* Default to dark mode */
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --grid-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Dark mode styles (which are now the default) */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --grid-color: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Subtle grain/noise utility for artistic minimal look */
+.bg-noise {
+  position: relative;
+}
+.bg-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Smooth theme transitions - but not for critical theme changes */
+*:not(html):not(body) {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Prevent transition on page load and ensure immediate theme changes */
+.preload *,
+.preload *:before,
+.preload *:after {
+  transition: none !important;
+}
+
+/* Force immediate theme changes when toggling */
+html.dark,
+html.dark *,
+html:not(.dark),
+html:not(.dark) * {
+  transition-duration: 0.15s !important;
+}
