@@ -2,76 +2,150 @@
 
 import { motion } from "framer-motion";
 
-type Skill = { name: string; img: string; tip?: string };
+const skillCategories = [
+  {
+    name: "Linux & Systems",
+    prefix: "os",
+    color: "text-[#00ff41]",
+    barColor: "bg-[#00ff41]",
+    skills: [
+      { name: "Arch Linux", level: 85 },
+      { name: "Kali Linux", level: 70 },
+      { name: "Bash/Shell", level: 80 },
+      { name: "System Config", level: 75 },
+    ],
+  },
+  {
+    name: "Networking & Servers",
+    prefix: "net",
+    color: "text-[#00e5ff]",
+    barColor: "bg-[#00e5ff]",
+    skills: [
+      { name: "TrueNAS", level: 80 },
+      { name: "Cloudflare", level: 85 },
+      { name: "Nginx", level: 70 },
+      { name: "Docker", level: 75 },
+    ],
+  },
+  {
+    name: "Web Development",
+    prefix: "web",
+    color: "text-[#ffb000]",
+    barColor: "bg-[#ffb000]",
+    skills: [
+      { name: "Next.js", level: 75 },
+      { name: "React", level: 70 },
+      { name: "Tailwind CSS", level: 85 },
+      { name: "TypeScript", level: 65 },
+    ],
+  },
+  {
+    name: "Self-Hosting & Cloud",
+    prefix: "cloud",
+    color: "text-[#ff3333]",
+    barColor: "bg-[#ff3333]",
+    skills: [
+      { name: "Nextcloud", level: 80 },
+      { name: "MinIO", level: 65 },
+      { name: "CF Tunnel", level: 85 },
+      { name: "Home Server", level: 90 },
+    ],
+  },
+  {
+    name: "AI & Exploration",
+    prefix: "ai",
+    color: "text-[#a855f7]",
+    barColor: "bg-[#a855f7]",
+    skills: [
+      { name: "LLMs", level: 60 },
+      { name: "Python", level: 70 },
+      { name: "Discord Bots", level: 75 },
+      { name: "Automation", level: 80 },
+    ],
+  },
+];
+
+function SkillBar({ level, color }: { level: number; color: string }) {
+  const filled = Math.round(level / 5);
+  const empty = 20 - filled;
+  return (
+    <span className="font-mono text-xs">
+      <span className={color}>{"█".repeat(filled)}</span>
+      <span className="text-[#222]">{"░".repeat(empty)}</span>
+      <span className="text-[#555] ml-2">{level}%</span>
+    </span>
+  );
+}
 
 export default function MinimalSkills() {
-  const skills: Skill[] = [
-    { name: "React", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "Next.js", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-    { name: "TypeScript", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-    { name: "JavaScript", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-
-    { name: "Linux System", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
-    { name: "Arch Linux", img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/archlinux/archlinux-original.svg" },
-    { name: "Server", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg", tip: "Ubuntu server" },
-    { name: "Shell", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" },
-
-    { name: "Cloudflare", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg" },
-    { name: "NAS", img: "https://cdn.simpleicons.org/truenas/0095D5" },
-    { name: "Nextcloud", img: "https://cdn.simpleicons.org/nextcloud/0082C9" },
-    { name: "Self-hosted Cloud Storage", img: "https://cdn.simpleicons.org/minio/C72C48" },
-    { name: "HTML5", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", tip: "Markup language" },
-
-    { name: "Docker", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-    { name: "Neovim", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/neovim/neovim-original.svg", tip: "Vim-based editor" },
-
-    { name: "Tailwind CSS", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-    { name: "Node.js", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-    { name: "Git", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-  ];
-
   return (
-    <section id="skills" className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-16">
-      <h2 className="text-center text-black dark:text-white text-xl font-medium mb-8">Skills</h2>
+    <section id="skills" className="py-20 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Command */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-[#00ff41] text-glow text-sm mb-4 font-mono"
+        >
+          $ neofetch --skills
+        </motion.p>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.4 }}
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6"
-      >
-        {skills.map((s, i) => (
-          <motion.div
-            key={s.name}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.4, delay: i * 0.03 }}
-            whileHover={{ y: -3, scale: 1.02 }}
-            className="group flex flex-col items-center justify-center gap-2 border border-zinc-200 dark:border-zinc-800 rounded-lg p-4 bg-white dark:bg-zinc-950 shadow-sm hover:shadow-md transition"
-            title={s.tip || s.name}
-          >
-            <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center">
-              <img
-                src={s.img}
-                alt={s.name}
-                loading="lazy"
-                referrerPolicy="no-referrer"
-                className="max-w-full max-h-full object-contain transition"
-                onError={(e) => {
-                  const t = e.currentTarget as HTMLImageElement;
-                  if (!t.dataset.fallback) {
-                    t.dataset.fallback = '1';
-                    t.src = `https://picsum.photos/seed/${encodeURIComponent(s.name)}/64/64`;
-                  }
-                }}
-              />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="terminal-card rounded-lg overflow-hidden"
+        >
+          <div className="flex items-center gap-2 px-4 py-2 bg-[#1a1a1a] border-b border-[#222]">
+            <div className="flex gap-1.5">
+              <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+              <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+              <div className="w-3 h-3 rounded-full bg-[#28c840]" />
             </div>
-            <div className="text-xs md:text-sm text-zinc-800 dark:text-zinc-200 text-center">{s.name}</div>
-          </motion.div>
-        ))}
-      </motion.div>
+            <span className="text-[#555] text-xs ml-2">skills — neofetch</span>
+          </div>
+
+          <div className="p-6 font-mono text-sm space-y-6">
+            {/* Neofetch header */}
+            <div className="text-[#ffb000] text-glow-amber">
+              <p>galib@arch</p>
+              <p className="text-[#555]">-----------</p>
+            </div>
+
+            {skillCategories.map((cat, catIndex) => (
+              <motion.div
+                key={cat.name}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: catIndex * 0.1 }}
+                className="space-y-2"
+              >
+                <p>
+                  <span className={`${cat.color} font-bold`}>{cat.prefix}</span>
+                  <span className="text-[#555]">://</span>
+                  <span className="text-[#ccc]">{cat.name}</span>
+                </p>
+                {cat.skills.map((skill) => (
+                  <div key={skill.name} className="flex items-center gap-3 pl-4">
+                    <span className="text-[#888] w-28 shrink-0 text-xs">{skill.name}</span>
+                    <SkillBar level={skill.level} color={cat.barColor} />
+                  </div>
+                ))}
+              </motion.div>
+            ))}
+
+            {/* Color blocks */}
+            <div className="flex gap-1 pt-2">
+              {["bg-[#0a0a0a]", "bg-[#ff3333]", "bg-[#00ff41]", "bg-[#ffb000]", "bg-[#00e5ff]", "bg-[#a855f7]", "bg-[#ff5f57]", "bg-[#ccc]"].map((c, i) => (
+                <div key={i} className={`w-6 h-3 ${c} rounded-sm`} />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

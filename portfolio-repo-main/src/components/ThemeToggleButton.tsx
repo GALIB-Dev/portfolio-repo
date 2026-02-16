@@ -21,13 +21,18 @@ export default function ThemeToggleButton() {
     
     // Update DOM
     const html = document.documentElement;
+    const body = document.body;
     html.style.colorScheme = newTheme;
     if (newTheme === "dark") {
       html.classList.add("dark");
       html.classList.remove("light");
+      body.classList.add("dark");
+      body.classList.remove("light");
     } else {
       html.classList.remove("dark");
       html.classList.add("light");
+      body.classList.remove("dark");
+      body.classList.add("light");
     }
   };
 

@@ -1,54 +1,136 @@
 @import "tailwindcss";
 
-/* Default to dark mode */
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --grid-color: rgba(255, 255, 255, 0.05);
+  --terminal-green: #00ff41;
+  --terminal-green-dim: #00cc33;
+  --terminal-amber: #ffb000;
+  --terminal-red: #ff3333;
+  --terminal-cyan: #00e5ff;
+  --terminal-bg: #0a0a0a;
+  --terminal-bg-light: #111111;
+  --terminal-border: #1a1a1a;
+  --terminal-comment: #555555;
 }
 
-/* Dark mode styles (which are now the default) */
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --grid-color: rgba(255, 255, 255, 0.05);
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: var(--terminal-bg);
+  color: var(--terminal-green);
+  font-family: 'Geist Mono', 'Fira Code', 'JetBrains Mono', 'Cascadia Code', monospace;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
 }
 
-/* Subtle grain/noise utility for artistic minimal look */
-.bg-noise {
+/* Scanline overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.015) 2px,
+    rgba(0, 255, 65, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* CRT vignette */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Terminal card */
+.terminal-card {
+  background: var(--terminal-bg-light);
+  border: 1px solid var(--terminal-border);
   position: relative;
 }
-.bg-noise::before {
+
+.terminal-card::before {
   content: "";
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--terminal-green), transparent);
+  opacity: 0.3;
 }
 
-/* Smooth theme transitions - but not for critical theme changes */
-*:not(html):not(body) {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+/* Blinking cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-/* Prevent transition on page load and ensure immediate theme changes */
-.preload *,
-.preload *:before,
-.preload *:after {
-  transition: none !important;
+.cursor-blink {
+  animation: blink 1s step-end infinite;
 }
 
-/* Force immediate theme changes when toggling */
-html.dark,
-html.dark *,
-html:not(.dark),
-html:not(.dark) * {
-  transition-duration: 0.15s !important;
+/* Text glow */
+.text-glow {
+  text-shadow: 0 0 5px var(--terminal-green), 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 5px var(--terminal-amber), 0 0 10px rgba(255, 176, 0, 0.3);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 5px var(--terminal-cyan), 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 5px var(--terminal-red), 0 0 10px rgba(255, 51, 51, 0.3);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 255, 65, 0.2);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--terminal-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border: 1px solid #333;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terminal-green);
+}
+
+/* Flickering subtle effect */
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  5% { opacity: 1; }
+  10% { opacity: 0.98; }
+  15% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.crt-flicker {
+  animation: flicker 4s infinite;
 }
