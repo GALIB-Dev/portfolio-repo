@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function MinimalAbout() {
   return (
-    <section id="about" className="py-20 px-4">
+    <section id="about" className="py-12 sm:py-20 px-3 sm:px-4">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,31 +28,31 @@ export default function MinimalAbout() {
               <span className="text-[#555] text-xs ml-2">about.txt</span>
             </div>
 
-            <div className="p-6 font-mono text-sm leading-relaxed space-y-4">
-              <div className="flex gap-4 items-start">
-                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0">1</div>
-                <p className="text-[#ffb000] text-glow-amber font-bold text-lg">
-                  # Mohammad Al Galib <span className="text-[#555] font-normal text-sm">(aka Galu)</span>
+            <div className="p-4 sm:p-6 font-mono text-xs sm:text-sm leading-relaxed space-y-3 sm:space-y-4">
+              <div className="flex gap-2 sm:gap-4 items-start">
+                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0 hidden sm:block">1</div>
+                <p className="text-[#ffb000] text-glow-amber font-bold text-base sm:text-lg">
+                  # Mohammad Al Galib <span className="text-[#555] font-normal text-xs sm:text-sm">(aka Galu)</span>
                 </p>
               </div>
 
-              <div className="flex gap-4 items-start">
-                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0">2</div>
+              <div className="flex gap-2 sm:gap-4 items-start">
+                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0 hidden sm:block">2</div>
                 <p className="text-[#555]">---</p>
               </div>
 
-              <div className="flex gap-4 items-start">
-                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0">3</div>
+              <div className="flex gap-2 sm:gap-4 items-start">
+                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0 hidden sm:block">3</div>
                 <p className="text-[#ccc]">
-                  Student from a small village in <span className="text-[#00ff41]">Bangladesh</span>.
-                  Currently on a gap year dedicated to{" "}
+                  Student from <span className="text-[#00ff41]">Bangladesh</span>.
+                  Dedicated to{" "}
                   <span className="text-[#00e5ff]">self-learning</span> and exploring
                   the infinite possibilities of technology.
                 </p>
               </div>
 
-              <div className="flex gap-4 items-start">
-                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0">4</div>
+              <div className="flex gap-2 sm:gap-4 items-start">
+                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0 hidden sm:block">4</div>
                 <p className="text-[#ccc]">
                   From mastering <span className="text-[#00ff41]">Linux systems</span> (Arch, Kali)
                   to deploying <span className="text-[#ffb000]">self-hosted servers</span> with TrueNAS
@@ -62,8 +62,8 @@ export default function MinimalAbout() {
                 </p>
               </div>
 
-              <div className="flex gap-4 items-start">
-                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0">5</div>
+              <div className="flex gap-2 sm:gap-4 items-start">
+                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0 hidden sm:block">5</div>
                 <p className="text-[#ccc]">
                   Dream: become a <span className="text-[#00ff41] text-glow font-bold">tech innovator</span> who
                   builds large-scale solutions — from advanced manufacturing
@@ -71,15 +71,15 @@ export default function MinimalAbout() {
                 </p>
               </div>
 
-              <div className="flex gap-4 items-start">
-                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0">6</div>
+              <div className="flex gap-2 sm:gap-4 items-start">
+                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0 hidden sm:block">6</div>
                 <p className="text-[#555]">---</p>
               </div>
 
               {/* Tags as env vars */}
-              <div className="flex gap-4 items-start">
-                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0">7</div>
-                <div className="flex flex-wrap gap-2">
+              <div className="flex gap-2 sm:gap-4 items-start">
+                <div className="text-[#555] text-xs select-none w-4 text-right shrink-0 hidden sm:block">7</div>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {["LINUX_ENTHUSIAST", "SELF_HOSTING_NERD", "FUTURE_BUILDER", "SYS_ARCHITECT"].map((tag) => (
                     <span
                       key={tag}

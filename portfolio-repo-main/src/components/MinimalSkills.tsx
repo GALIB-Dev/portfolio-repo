@@ -70,8 +70,17 @@ function SkillBar({ level, color }: { level: number; color: string }) {
   const empty = 20 - filled;
   return (
     <span className="font-mono text-xs">
-      <span className={color}>{"█".repeat(filled)}</span>
-      <span className="text-[#222]">{"░".repeat(empty)}</span>
+      {/* Block chars for sm+ screens */}
+      <span className="hidden sm:inline">
+        <span className={color}>{"█".repeat(filled)}</span>
+        <span className="text-[#222]">{"░".repeat(empty)}</span>
+      </span>
+      {/* CSS bar for mobile */}
+      <span className="sm:hidden inline-flex items-center gap-2 w-full">
+        <span className="flex-1 h-2 bg-[#111] rounded overflow-hidden">
+          <span className={`block h-full rounded ${color.replace("text-", "bg-")}`} style={{ width: `${level}%` }} />
+        </span>
+      </span>
       <span className="text-[#555] ml-2">{level}%</span>
     </span>
   );
@@ -79,7 +88,7 @@ function SkillBar({ level, color }: { level: number; color: string }) {
 
 export default function MinimalSkills() {
   return (
-    <section id="skills" className="py-20 px-4">
+    <section id="skills" className="py-12 sm:py-20 px-3 sm:px-4">
       <div className="max-w-4xl mx-auto">
         {/* Command */}
         <motion.p
@@ -107,7 +116,7 @@ export default function MinimalSkills() {
             <span className="text-[#555] text-xs ml-2">skills — neofetch</span>
           </div>
 
-          <div className="p-6 font-mono text-sm space-y-6">
+          <div className="p-4 sm:p-6 font-mono text-sm space-y-5 sm:space-y-6">
             {/* Neofetch header */}
             <div className="text-[#ffb000] text-glow-amber">
               <p>galib@arch</p>
@@ -129,8 +138,8 @@ export default function MinimalSkills() {
                   <span className="text-[#ccc]">{cat.name}</span>
                 </p>
                 {cat.skills.map((skill) => (
-                  <div key={skill.name} className="flex items-center gap-3 pl-4">
-                    <span className="text-[#888] w-28 shrink-0 text-xs">{skill.name}</span>
+                  <div key={skill.name} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 pl-2 sm:pl-4">
+                    <span className="text-[#888] sm:w-28 shrink-0 text-xs">{skill.name}</span>
                     <SkillBar level={skill.level} color={cat.barColor} />
                   </div>
                 ))}

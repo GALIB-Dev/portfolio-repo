@@ -51,7 +51,7 @@ export default function Vision() {
   };
 
   return (
-    <section id="vision" className="py-20 px-4">
+    <section id="vision" className="py-12 sm:py-20 px-3 sm:px-4">
       <div className="max-w-4xl mx-auto">
         {/* Command */}
         <motion.p
@@ -81,14 +81,14 @@ export default function Vision() {
             </span>
           </div>
 
-          <div className="p-6 font-mono text-sm space-y-6">
+          <div className="p-4 sm:p-6 font-mono text-sm space-y-5 sm:space-y-6">
             {/* Header */}
             <div>
               <p className="text-[#ffb000] text-glow-amber text-base">
                 # ROADMAP.md
               </p>
               <p className="text-[#555] mt-1">
-                ## Vision: From a village in Bangladesh to the world.
+                ## Vision: From Bangladesh to the world.
               </p>
               <p className="text-[#888] text-xs mt-2">
                 I don&apos;t just want to be a developer — I want to be a{" "}
@@ -106,7 +106,7 @@ export default function Vision() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="border border-[#222] rounded p-4 hover:border-[#333] transition-colors"
+                  className="border border-[#222] rounded p-3 sm:p-4 hover:border-[#333] transition-colors"
                 >
                   <div className="flex flex-wrap items-center gap-3 mb-2">
                     <span

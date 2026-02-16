@@ -9,10 +9,10 @@ const lines = [
   { text: "mohammad_al_galib", color: "text-[#ffb000]", delay: 0.3 },
   { text: "", color: "", delay: 0.5 },
   { text: "$ cat /etc/hostname", color: "text-[#00ff41]", delay: 0.7 },
-  { text: "village-kid-turned-hacker", color: "text-[#ffb000]", delay: 1.0 },
+  { text: "self-taught-hacker", color: "text-[#ffb000]", delay: 1.0 },
   { text: "", color: "", delay: 1.2 },
   { text: "$ uname -a", color: "text-[#00ff41]", delay: 1.4 },
-  { text: "Linux galib 6.x.x #1 SMP // Bangladesh // Gap Year // Building the Future", color: "text-[#888]", delay: 1.7 },
+  { text: "Linux galib 6.x.x #1 SMP // BD // Future", color: "text-[#888]", delay: 1.7 },
 ];
 
 export default function MinimalHero() {
@@ -31,14 +31,14 @@ export default function MinimalHero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 pt-20 pb-12 relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center px-3 sm:px-4 pt-16 sm:pt-20 pb-8 sm:pb-12 relative overflow-hidden">
       <div className="max-w-4xl mx-auto w-full">
         {/* ASCII art name */}
         <motion.pre
           initial={{ opacity: 0 }}
           animate={{ opacity: showAscii ? 1 : 0 }}
           transition={{ duration: 0.8 }}
-          className="text-[#00ff41] text-glow text-[0.45rem] sm:text-xs md:text-sm leading-tight mb-8 select-none font-mono"
+          className="text-[#00ff41] text-glow text-[0.35rem] sm:text-xs md:text-sm leading-tight mb-6 sm:mb-8 select-none font-mono overflow-x-auto"
           aria-label="Galib"
         >
 {`  ██████   █████  ██      ██ ██████  
@@ -61,7 +61,7 @@ export default function MinimalHero() {
           </div>
 
           {/* Terminal content */}
-          <div className="p-6 font-mono text-sm leading-relaxed min-h-[280px] flex">
+          <div className="p-4 sm:p-6 font-mono text-xs sm:text-sm leading-relaxed min-h-[220px] sm:min-h-[280px] flex flex-col md:flex-row">
             {/* Left: commands */}
             <div className="flex-1 space-y-1">
             <p className="text-[#555] text-xs mb-4">Last login: Sun Feb 15 03:14:07 2026 on tty1</p>
@@ -117,9 +117,9 @@ export default function MinimalHero() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="hidden md:flex flex-col items-center justify-center ml-6 pl-6 border-l border-[#222]"
+              className="flex flex-row md:flex-col items-center justify-center mt-4 pt-4 border-t md:border-t-0 md:mt-0 md:pt-0 md:ml-6 md:pl-6 md:border-l border-[#222]"
             >
-              <div className="relative w-32 h-32 lg:w-40 lg:h-40 rounded-lg overflow-hidden border-2 border-[#00ff41]/40 shadow-[0_0_20px_rgba(0,255,65,0.15)]">
+              <div className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-lg overflow-hidden border-2 border-[#00ff41]/40 shadow-[0_0_20px_rgba(0,255,65,0.15)]">
                 <Image
                   src="/me.jpg"
                   alt="Mohammad Al Galib"
@@ -130,10 +130,12 @@ export default function MinimalHero() {
                 {/* Scanline overlay on photo */}
                 <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.15)_2px,rgba(0,0,0,0.15)_4px)] pointer-events-none" />
               </div>
-              <p className="text-[#555] text-xs mt-3 text-center">
-                <span className="text-[#00ff41]">user</span>@galib
-              </p>
-              <p className="text-[#333] text-[10px] mt-1">// me.jpg</p>
+              <div className="ml-4 md:ml-0 md:text-center">
+                <p className="text-[#555] text-xs mt-0 md:mt-3">
+                  <span className="text-[#00ff41]">user</span>@galib
+                </p>
+                <p className="text-[#333] text-[10px] mt-1">// me.jpg</p>
+              </div>
             </motion.div>
           </div>
         </div>

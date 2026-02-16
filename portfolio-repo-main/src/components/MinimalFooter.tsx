@@ -57,7 +57,7 @@ export default function MinimalFooter() {
   return (
     <>
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4">
+      <section id="contact" className="py-12 sm:py-20 px-3 sm:px-4">
         <div className="max-w-4xl mx-auto">
           {/* Command */}
           <motion.p
@@ -87,10 +87,10 @@ export default function MinimalFooter() {
               </span>
             </div>
 
-            <div className="p-6 font-mono text-sm space-y-6">
+            <div className="p-4 sm:p-6 font-mono text-xs sm:text-sm space-y-5 sm:space-y-6 overflow-x-auto">
               {/* Ping output */}
               <div className="space-y-1">
-                <p className="text-[#888]">
+                <p className="text-[#888] break-all sm:break-normal">
                   PING galib (127.0.0.1) 56(84) bytes of data.
                 </p>
                 {[1, 2, 3].map((i) => (
@@ -131,7 +131,7 @@ export default function MinimalFooter() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.15 }}
-                      className="block hover:bg-[#111] px-2 py-1 rounded transition-colors group"
+                      className="block hover:bg-[#111] px-2 py-1.5 rounded transition-colors group break-all sm:break-normal"
                     >
                       <span className="text-[#00e5ff]">
                         {conn.protocol}
@@ -141,7 +141,7 @@ export default function MinimalFooter() {
                         {conn.host}
                       </span>
                       <span className="text-[#555]">:{conn.port}</span>
-                      <span className={`ml-4 text-xs ${conn.color}`}>
+                      <span className={`sm:ml-4 block sm:inline text-xs ${conn.color}`}>
                         {conn.status}
                       </span>
                     </motion.a>
@@ -150,7 +150,7 @@ export default function MinimalFooter() {
               </div>
 
               {/* Location */}
-              <div className="border border-[#222] rounded p-3">
+              <div className="border border-[#222] rounded p-3 space-y-1 overflow-hidden">
                 <p className="text-[#555] text-xs">
                   <span className="text-[#ffb000]">$GEO</span>=
                   <span className="text-[#00ff41]">
@@ -176,7 +176,7 @@ export default function MinimalFooter() {
       </section>
 
       {/* Footer */}
-      <footer className="py-6 px-4 border-t border-[#222]">
+      <footer className="py-4 sm:py-6 px-3 sm:px-4 border-t border-[#222]">
         <div className="max-w-4xl mx-auto font-mono text-xs">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-[#555]">

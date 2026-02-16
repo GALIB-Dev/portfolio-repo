@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
+
+import truenasImg from "@/Image/truenas.png";
+import selfHostedImg from "@/Image/self-hosted.png";
+import twelveBasesImg from "@/Image/12bases.png";
+import praxisImg from "@/Image/Praxis.jpeg";
+import vjusImg from "@/Image/vjus.png";
 
 type Project = {
   id: number;
@@ -14,6 +21,7 @@ type Project = {
   category: string;
   permissions: string;
   size: string;
+  image?: StaticImageData;
 };
 
 const projects: Project[] = [
@@ -27,6 +35,7 @@ const projects: Project[] = [
     category: "Infrastructure",
     permissions: "drwxr-xr-x",
     size: "4.2G",
+    image: truenasImg,
   },
   {
     id: 1,
@@ -39,6 +48,7 @@ const projects: Project[] = [
     category: "Automation",
     permissions: "-rwxr-xr-x",
     size: "856K",
+    image: praxisImg,
   },
   {
     id: 2,
@@ -50,6 +60,7 @@ const projects: Project[] = [
     category: "Infrastructure",
     permissions: "drwxr-xr-x",
     size: "12.8G",
+    image: selfHostedImg,
   },
   {
     id: 3,
@@ -62,6 +73,7 @@ const projects: Project[] = [
     category: "Linux",
     permissions: "drwxr-xr-x",
     size: "28.4G",
+    image: twelveBasesImg,
   },
   {
     id: 4,
@@ -73,6 +85,7 @@ const projects: Project[] = [
     category: "Infrastructure",
     permissions: "drwx------",
     size: "2.1G",
+    image: twelveBasesImg,
   },
   {
     id: 5,
@@ -84,6 +97,7 @@ const projects: Project[] = [
     category: "Infrastructure",
     permissions: "drwxr-xr-x",
     size: "64.0G",
+    image: vjusImg,
   },
 ];
 
@@ -91,7 +105,6 @@ const categories = ["All", "Infrastructure", "Automation", "Linux"];
 
 export default function MinimalProjects() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [expanded, setExpanded] = useState<number | null>(null);
 
   const filteredProjects =
     activeCategory === "All"
@@ -99,7 +112,7 @@ export default function MinimalProjects() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="py-12 sm:py-20 px-3 sm:px-4">
       <div className="max-w-4xl mx-auto">
         {/* Command */}
         <motion.p
@@ -148,86 +161,53 @@ export default function MinimalProjects() {
               ))}
             </div>
 
-            {/* Column header */}
-            <div className="text-[#555] mb-2 hidden sm:block">
-              <span className="inline-block w-24">permissions</span>
-              <span className="inline-block w-14">owner</span>
-              <span className="inline-block w-16 text-right">size</span>
-              <span className="ml-4">name</span>
-            </div>
-            <div className="text-[#555] mb-2 hidden sm:block">
-              {"─".repeat(60)}
-            </div>
-
-            {/* Project rows */}
-            <div className="space-y-1">
+            {/* Project cards */}
+            <div className="grid gap-4 sm:grid-cols-2">
               {filteredProjects.map((p, index) => (
                 <motion.div
                   key={p.id}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.2, delay: index * 0.05 }}
+                  transition={{ duration: 0.3, delay: index * 0.08 }}
+                  className="border border-[#222] rounded-lg overflow-hidden hover:border-[#00ff41]/30 transition-colors group"
                 >
-                  <button
-                    onClick={() =>
-                      setExpanded(expanded === p.id ? null : p.id)
-                    }
-                    className="w-full text-left hover:bg-[#111] px-1 py-1 rounded transition-colors group"
-                  >
-                    <span className="text-[#ffb000] hidden sm:inline-block w-24">
-                      {p.permissions}
-                    </span>
-                    <span className="text-[#555] hidden sm:inline-block w-14">
-                      galib
-                    </span>
-                    <span className="text-[#00e5ff] hidden sm:inline-block w-16 text-right">
-                      {p.size}
-                    </span>
-                    <span
-                      className={`ml-0 sm:ml-4 ${
-                        p.permissions.startsWith("d")
-                          ? "text-[#00ff41] text-glow"
-                          : "text-[#ccc]"
-                      } group-hover:text-[#fff] transition-colors`}
-                    >
-                      {p.permissions.startsWith("d")
-                        ? `${p.slug}/`
-                        : p.slug}
-                    </span>
-                    <span className="text-[#333] ml-2">
-                      {expanded === p.id ? "[-]" : "[+]"}
-                    </span>
-                  </button>
-
-                  {expanded === p.id && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      className="ml-4 sm:ml-8 mt-1 mb-3 pl-4 border-l border-[#222] space-y-2"
-                    >
-                      <p className="text-[#888]">
-                        <span className="text-[#555]"># </span>
-                        {p.description}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {p.tags.map((t) => (
-                          <span
-                            key={t}
-                            className="px-2 py-0.5 text-xs border border-[#333] text-[#ffb000] rounded"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                      <p className="text-[#555] text-xs">
-                        <span className="text-[#00e5ff]">category</span>=
-                        <span className="text-[#ff3333]">
-                          &quot;{p.category}&quot;
-                        </span>
-                      </p>
-                    </motion.div>
+                  {/* Image */}
+                  {p.image && (
+                    <div className="relative w-full h-36 bg-[#111]">
+                      <Image
+                        src={p.image}
+                        alt={p.title}
+                        fill
+                        className="object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                      />
+                      <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.1)_2px,rgba(0,0,0,0.1)_4px)] pointer-events-none" />
+                    </div>
                   )}
+
+                  {/* Info */}
+                  <div className="p-3 space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#ffb000] text-xs">{p.permissions}</span>
+                      <span className="text-[#00e5ff] text-xs">{p.size}</span>
+                    </div>
+                    <p className={`text-sm font-bold ${p.permissions.startsWith("d") ? "text-[#00ff41] text-glow" : "text-[#ccc]"}`}>
+                      {p.permissions.startsWith("d") ? `${p.slug}/` : p.slug}
+                    </p>
+                    <p className="text-[#888] text-xs leading-relaxed">
+                      <span className="text-[#555]"># </span>{p.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {p.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="px-2 py-0.5 text-[10px] border border-[#333] text-[#ffb000] rounded"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>

@@ -134,3 +134,16 @@ body::before {
 .crt-flicker {
   animation: flicker 4s infinite;
 }
+
+/* Disable heavy CRT effects on mobile for performance */
+@media (max-width: 640px) {
+  body::after {
+    display: none; /* scanlines */
+  }
+  body::before {
+    display: none; /* vignette */
+  }
+  .crt-flicker {
+    animation: none;
+  }
+}
