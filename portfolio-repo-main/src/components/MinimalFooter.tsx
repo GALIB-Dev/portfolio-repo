@@ -3,11 +3,14 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
+const PING_TIMES = ["1.24", "0.87", "1.53"];
+
 export default function MinimalFooter() {
-  const year = new Date().getFullYear();
+  const [year, setYear] = useState(2026);
   const [uptimeSeconds, setUptimeSeconds] = useState(0);
 
   useEffect(() => {
+    setYear(new Date().getFullYear());
     const start = Date.now();
     const interval = setInterval(() => {
       setUptimeSeconds(Math.floor((Date.now() - start) / 1000));
@@ -108,7 +111,7 @@ export default function MinimalFooter() {
                       : icmp_seq={i} ttl=64 time=
                     </span>
                     <span className="text-[#00e5ff]">
-                      {(Math.random() * 2 + 0.1).toFixed(2)}
+                      {PING_TIMES[i - 1]}
                     </span>
                     <span className="text-[#555]"> ms</span>
                   </motion.p>

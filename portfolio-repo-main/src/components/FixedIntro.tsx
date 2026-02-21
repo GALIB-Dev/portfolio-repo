@@ -63,6 +63,10 @@ export default function FixedIntro() {
             <a
               key={item.label}
               href={`#${item.label}`}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById(item.label)?.scrollIntoView({ behavior: "smooth" });
+              }}
               className="px-3 py-1.5 text-xs text-[#888] hover:text-[#00ff41] hover:bg-[#00ff41]/5 rounded transition-all duration-200 group"
               title={item.cmd}
             >
@@ -114,7 +118,11 @@ export default function FixedIntro() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    document.getElementById(item.label)?.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className="block px-3 py-2 text-sm text-[#888] hover:text-[#00ff41] hover:bg-[#00ff41]/5 rounded transition-all"
                 >
                   <span className="text-[#555] mr-2">$</span>

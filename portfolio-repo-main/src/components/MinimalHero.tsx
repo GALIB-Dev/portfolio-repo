@@ -31,7 +31,7 @@ export default function MinimalHero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-3 sm:px-4 pt-16 sm:pt-20 pb-8 sm:pb-12 relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center px-3 sm:px-4 pt-16 sm:pt-20 pb-8 sm:pb-12 relative overflow-hidden">
       <div className="max-w-4xl mx-auto w-full">
         {/* ASCII art name */}
         <motion.pre
